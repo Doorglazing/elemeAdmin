@@ -4,7 +4,7 @@ public class Admin {
     private Integer adminId;
     private String adminName;
     private String password;
-    Admin(){}
+    public Admin(){}
 
     public Admin(Integer adminId, String adminName, String password) {
         this.adminId = adminId;
@@ -34,5 +34,14 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
