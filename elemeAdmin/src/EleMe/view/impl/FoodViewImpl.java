@@ -25,6 +25,7 @@ public class FoodViewImpl implements FoodView {
     }
 
     @Override
+
     public void FoodSelectView(Business business) {
         System.out.println("请输入要查询的食物id");
         int id = input.nextInt();
@@ -37,10 +38,35 @@ public class FoodViewImpl implements FoodView {
 
     @Override
     public void FoodUpdateView(Business business) {
+        String name = "";
+        String foodExpalain = "";
+        double price = 0;
         System.out.println("请输入要修改的食物id");
         int id = input.nextInt();
-        System.out.println("请输入要修改的食物名字，简介，价格（以回车分隔）");
-        new FoodListDaoImpl().updateFood(new Food(id, input.next(), input.next(), input.nextDouble(), business.getBusinessId()));
+        for(Food food:new FoodListDaoImpl().foodList(business)){
+            if(food.getFoodID() == id){
+                price = food.getFoodPrice();
+                name = food.getFoodName();
+                foodExpalain = food.getFoodExplain();
+            }
+        }
+        System.out.println("是否更改食物名字(y/n)");
+        if(input.next().toLowerCase().equals("y")){
+            System.out.println("请输入新的食物名字");
+            name = input.next();
+        }
+        System.out.println("是否更改食物简介(y/n)");
+        if(input.next().toLowerCase().equals("y")){
+            System.out.println("请输入新的食物简介");
+            foodExpalain = input.next();
+        }
+        System.out.println("是否更改食物价格(y/n)");
+        if(input.next().toLowerCase().equals("y")){
+            System.out.println("请输入新的食物价格");
+            price = input.nextDouble();
+        }
+
+        new FoodListDaoImpl().updateFood(new Food(id, name, foodExpalain, price, business.getBusinessId()));
     }
 
     @Override

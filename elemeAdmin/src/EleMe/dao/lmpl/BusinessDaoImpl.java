@@ -83,7 +83,8 @@ public class BusinessDaoImpl extends Property implements BusinessDao {
             pst.setInt(1, id);
             count = pst.executeUpdate();
             if(count > 0){
-                conn.commit();
+                conn.commit();*
+                System.out.println("删除成功");
             }else{
                 System.out.println("商家编号错误,删除失败");
             }

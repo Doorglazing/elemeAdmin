@@ -64,7 +64,6 @@ public class BusinessViewImpl implements BusinessView {
         key = input.next().toLowerCase();
         if(key.equals("y")){
             businessDao.businessDelete(businessId);
-            System.out.println("删除成功");
         }else{
             System.out.println("删除失败");
         }
